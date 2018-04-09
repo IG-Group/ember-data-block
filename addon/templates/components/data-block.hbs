@@ -1,0 +1,11 @@
+{{#if errorObj}}
+  {{#if error}}
+    {{component error}}
+  {{/if}}
+{{else if isLoading}}
+  {{#if loading}}
+    {{component loading}}
+  {{/if}}
+{{else}}
+  {{yield model}}
+{{/if}}

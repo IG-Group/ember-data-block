@@ -1,3 +1,31 @@
-<h2 id="title">Welcome to Ember</h2>
+<style>
+  section {
+    height: 50px;
+    background: #bbb;
+    margin: 10px;
+  }
+</style>
 
-{{outlet}}
+<section>
+  {{#person-data id=1 as |model|}}
+    Hi {{model.name}}
+  {{/person-data}}
+</section>
+
+<section>
+  {{#person-data id=1 loading="loading-spinner" error="error-message" as |model|}}
+    Hi {{model.name}}
+  {{/person-data}}
+</section>
+
+<section>
+  {{#person-data id=2 error="error-message" as |model|}}
+    Hi {{model.name}}
+  {{/person-data}}
+</section>
+
+<section>
+  {{#person-data-sync id=1 loading="loading-spinner" as |model|}}
+    Hi {{model.name}}
+  {{/person-data-sync}}
+</section>

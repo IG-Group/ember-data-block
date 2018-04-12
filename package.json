@@ -1,17 +1,17 @@
 {
   "name": "ember-data-block",
   "version": "0.0.0",
-  "description": "The default blueprint for ember-cli addons.",
+  "description": "Provides a data-block component for loading data with an API similar to Ember's Route.",
   "keywords": [
     "ember-addon"
   ],
   "license": "MIT",
-  "author": "",
+  "author": "Luke Sargeant",
   "directories": {
     "doc": "doc",
     "test": "tests"
   },
-  "repository": "",
+  "repository": "https://github.com/IG-Group/ember-data-block",
   "scripts": {
     "build": "ember build",
     "lint:js": "eslint ./*.js addon addon-test-support app config lib server test-support tests",

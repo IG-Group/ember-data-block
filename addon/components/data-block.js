@@ -2,6 +2,7 @@ import Component from '@ember/component';
 import layout from '../templates/components/data-block';
 import { assert } from '@ember/debug';
 import { join } from '@ember/runloop';
+import { get } from '@ember/object';
 
 export default Component.extend({
   layout,
@@ -15,8 +16,8 @@ export default Component.extend({
     assert('When extending {{data-block}} the model hook should be implemented.');
   },
 
-  init() {
-    this._super();
+  didReceiveAttrs() {
+    this._super(...arguments);
     this._model = this.model;
     this._main();
   },
@@ -33,13 +34,17 @@ export default Component.extend({
         .then(
           (model) => {
             join(this, function() {
-              this.set('model', model);
-              this.set('isLoading', false);
+              if (!get(this, 'isDestroying') && !get(this, 'isDestroyed')) {
+                this.set('model', model);
+                this.set('isLoading', false);
+              }
             });
           },
           (error) => {
             join(this, function() {
-              this.set('errorObj', error);
+              if (!get(this, 'isDestroying') && !get(this, 'isDestroyed')) {
+                this.set('errorObj', error);
+              }
             });
           }
         );

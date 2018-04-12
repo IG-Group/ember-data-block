@@ -1,6 +1,6 @@
 {
   "name": "ember-data-block",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "Provides a data-block component for loading data with an API similar to Ember's Route.",
   "keywords": [
     "ember-addon"

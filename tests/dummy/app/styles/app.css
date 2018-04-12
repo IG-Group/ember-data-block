@@ -1,0 +1,13 @@
+section {
+  height: 50px;
+  background: black;
+  color: white;
+  font-size: 40px;
+  margin: 10px;
+  padding: 20px;
+  text-align: center;
+}
+svg path,
+svg rect{
+  fill: #FFF;
+}

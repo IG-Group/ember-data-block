@@ -8,9 +8,9 @@ export default DataBlock.extend({
 
     window.setTimeout(() => {
       run(function() {
-        model.set('name', 'Fred');
+        model.set('name', 'Luke');
       });
-    }, 2000);
+    }, 3000);
 
     return model;
   }

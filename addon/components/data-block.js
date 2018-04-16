@@ -1,7 +1,7 @@
 import Component from '@ember/component';
 import layout from '../templates/components/data-block';
 import { assert } from '@ember/debug';
-import { join } from '@ember/runloop';
+import { run } from '@ember/runloop';
 import { get } from '@ember/object';
 
 export default Component.extend({
@@ -11,6 +11,7 @@ export default Component.extend({
   isLoading: false,
   error: null,
   errorObj: null,
+  results: null,
 
   model() {
     assert('When extending {{data-block}} the model hook should be implemented.');
@@ -18,30 +19,29 @@ export default Component.extend({
 
   didReceiveAttrs() {
     this._super(...arguments);
-    this._model = this.model;
     this._main();
   },
 
   _main() {
-    this.set('model', null);
+    this.set('result', null);
     this.set('errorObj', null);
     this.set('isLoading', true);
 
-    let model = this._model();
+    let result = this.model();
 
-    if (model.then) {
-      model
+    if (result && result.then) {
+      result
         .then(
-          (model) => {
-            join(this, function() {
+          (result) => {
+            run(this, function() {
               if (!get(this, 'isDestroying') && !get(this, 'isDestroyed')) {
-                this.set('model', model);
+                this.set('result', result);
                 this.set('isLoading', false);
               }
             });
           },
           (error) => {
-            join(this, function() {
+            run(this, function() {
               if (!get(this, 'isDestroying') && !get(this, 'isDestroyed')) {
                 this.set('errorObj', error);
               }
@@ -49,7 +49,7 @@ export default Component.extend({
           }
         );
     } else {
-      this.set('model', model);
+      this.set('result', result);
       this.set('isLoading', false);
     }
   }

@@ -1,6 +1,6 @@
 {
   "name": "ember-data-block",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Provides a data-block component for loading data with an API similar to Ember's Route.",
   "keywords": [
     "ember-addon"
@@ -21,7 +21,6 @@
   "dependencies": {
     "ember-cli-babel": "^6.6.0",
     "ember-cli-htmlbars": "^2.0.1"
-
   },
   "devDependencies": {
     "broccoli-asset-rev": "^2.4.5",
@@ -39,6 +38,7 @@
     "ember-export-application-global": "^2.0.0",
     "ember-load-initializers": "^1.0.0",
     "ember-maybe-import-regenerator": "^0.1.6",
+    "ember-native-dom-helpers": "^0.6.2",
     "ember-resolver": "^4.0.0",
     "ember-source": "~3.0.0",
     "ember-source-channel-url": "^1.0.1",
